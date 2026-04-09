@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central America Tours Operator Growth Engine</title>
+  <meta name="description" content="Strategic plan for a Nicaragua-first operator onboarding and distribution platform for tours and experiences." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #0f1530;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --text: #e8ecf8;
+      --muted: #a8b2d8;
+      --accent: #64d8b4;
+      --accent-2: #7bb3ff;
+      --warn: #ffd166;
+      --shadow: 0 18px 50px rgba(0,0,0,0.28);
+      --radius: 18px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(123,179,255,0.16), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(100,216,180,0.14), transparent 22%),
+        linear-gradient(180deg, #0a1020 0%, #0d1430 48%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(11,16,32,0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 14px 0;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .badge {
+      width: 38px; height: 38px; display: grid; place-items: center;
+      border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #04111b; font-weight: 900; box-shadow: var(--shadow);
+    }
+    .brand-subtitle { font-size:13px; font-weight:600; color: var(--muted); }
+    .topbar-right { display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:flex-end; }
+    .nav {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .nav a {
+      text-decoration: none; color: var(--muted); font-size: 14px;
+      padding: 8px 10px; border-radius: 10px;
+    }
+    .nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .lang-toggle {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px; border-radius:12px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+    .lang-btn {
+      border: none; border-radius: 9px; padding: 8px 12px; cursor:pointer;
+      background: transparent; color: var(--muted); font-weight: 800; font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #04111b;
+      box-shadow: var(--shadow);
+    }
+
+    .hero { padding: 56px 0 22px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: stretch;
+    }
+    .hero-card, .card, .stat, .section-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card { padding: 30px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--accent); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 56px); line-height: 1.02; margin: 16px 0 14px;
+    }
+    .lead {
+      color: var(--muted); font-size: clamp(16px, 2vw, 19px); max-width: 760px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 12px; padding: 12px 16px; text-decoration: none; font-weight: 700;
+      border: 1px solid var(--border);
+    }
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent), #8cf2d1);
+      color: #042117; border: none;
+    }
+    .button.secondary { color: var(--text); background: rgba(255,255,255,0.04); }
+
+    .stack-list { display: grid; gap: 12px; }
+    .stack-item {
+      padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    }
+    .stack-item strong { display: block; margin-bottom: 4px; }
+    .muted { color: var(--muted); }
+
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 26px 0 40px;
+    }
+    .stat { padding: 18px; }
+    .stat .num { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .stat .label { color: var(--muted); font-size: 14px; }
+
+    section { padding: 18px 0 18px; }
+    .section-head { margin-bottom: 18px; }
+    .section-head h2 { font-size: clamp(24px, 3vw, 36px); margin: 0 0 8px; }
+    .section-head p { color: var(--muted); margin: 0; max-width: 820px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid; gap: 16px;
+    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card { padding: 22px; }
+    .card h3 { margin-top: 0; margin-bottom: 10px; font-size: 20px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(100,216,180,0.08); color: #bbf7e8;
+      border: 1px solid rgba(100,216,180,0.18);
+      padding: 8px 10px; border-radius: 999px; font-size: 13px; font-weight: 700;
+    }
+    ul.clean { list-style: none; padding: 0; margin: 0; }
+    ul.clean li {
+      position: relative; padding-left: 18px; margin: 10px 0; color: var(--muted);
+    }
+    ul.clean li::before {
+      content: ""; position: absolute; width: 8px; height: 8px; left: 0; top: 0.6em;
+      border-radius: 99px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .compare {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .compare .card { min-height: 100%; }
+
+    .workflow {
+      display: grid; gap: 14px;
+    }
+    .workflow-step {
+      display: grid; grid-template-columns: 74px 1fr; gap: 16px; align-items: start;
+      padding: 18px; border-radius: 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    }
+    .step-num {
+      width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(100,216,180,0.2), rgba(123,179,255,0.2));
+      border: 1px solid rgba(255,255,255,0.12); font-weight: 900; font-size: 20px;
+    }
+    .workflow-step h4 { margin: 0 0 6px; font-size: 18px; }
+    .mini-ux {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px;
+    }
+    .mini-ux div {
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px; background: rgba(255,255,255,0.03);
+      font-size: 14px;
+    }
+    .mini-ux strong { display: block; color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+
+    .roadmap {
+      position: relative; display: grid; gap: 16px;
+    }
+    .roadmap::before {
+      content: ""; position: absolute; left: 20px; top: 10px; bottom: 10px; width: 2px; background: rgba(255,255,255,0.12);
+    }
+    .milestone {
+      position: relative; margin-left: 48px; padding: 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    }
+    .milestone::before {
+      content: ""; position: absolute; left: -38px; top: 24px; width: 14px; height: 14px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 0 0 6px rgba(100,216,180,0.08);
+    }
+    .milestone .tag {
+      display: inline-block; font-size: 12px; font-weight: 800; color: #04131b;
+      background: linear-gradient(135deg, var(--warn), #ffe49a); padding: 6px 8px; border-radius: 999px; margin-bottom: 10px;
+    }
+
+    .pricing .card { position: relative; overflow: hidden; }
+    .pricing .price { font-size: 38px; font-weight: 900; margin: 12px 0 4px; }
+    .pricing .sub { color: var(--muted); font-size: 14px; }
+    .highlight {
+      border-color: rgba(100,216,180,0.42);
+      background: linear-gradient(180deg, rgba(100,216,180,0.12), rgba(255,255,255,0.05));
+    }
+
+    .arch-grid {
+      display: grid; grid-template-columns: 0.9fr 0.9fr 1.2fr; gap: 16px;
+    }
+    .code-block {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      white-space: pre-wrap; background: rgba(0,0,0,0.22); border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px; border-radius: 14px; color: #cce6ff; font-size: 13px; overflow: auto;
+    }
+
+    .footer {
+      padding: 38px 0 60px; color: var(--muted); font-size: 14px;
+    }
+    .footer .card { padding: 18px 20px; }
+
+    .kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid, .arch-grid, .grid-4, .grid-3, .compare, .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .hero-grid, .grid-2, .grid-3, .grid-4, .compare, .arch-grid, .stats, .mini-ux { grid-template-columns: 1fr; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .topbar-right { width:100%; justify-content:space-between; }
+      .workflow-step { grid-template-columns: 1fr; }
+      .milestone { margin-left: 30px; }
+      .roadmap::before { left: 12px; }
+      .milestone::before { left: -26px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="badge">T</div>
+        <div>
+          <div data-i18n="brand.title">Tour Operator Growth Engine</div>
+          <div class="brand-subtitle" data-i18n="brand.subtitle">Nicaragua-first product strategy</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <nav class="nav">
+          <a href="#thesis" data-i18n="nav.thesis">Thesis</a>
+          <a href="#model" data-i18n="nav.model">Business Model</a>
+          <a href="#ux" data-i18n="nav.ux">UX Flows</a>
+          <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
+          <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
+          <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        </nav>
+        <div class="lang-toggle" aria-label="Language toggle">
+          <button class="lang-btn active" data-lang-btn="en">EN</button>
+          <button class="lang-btn" data-lang-btn="es">ES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero wrap">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <div class="eyebrow" data-i18n="hero.eyebrow">Strategic plan • Tool-first → Marketplace-later</div>
+        <h1 data-i18n="hero.title">Build the operator infrastructure layer for tours in Central America</h1>
+        <p class="lead" data-i18n="hero.lead">
+          Start in Nicaragua with a service-backed, WhatsApp-first platform that helps tour operators go from zero digital presence to live listings on global travel platforms. Use AI to structure voice notes, photos, and rough details into platform-ready listings, then layer in a lightweight marketplace once supply density is real.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#roadmap" data-i18n="hero.cta1">See execution plan</a>
+          <a class="button secondary" href="#architecture" data-i18n="hero.cta2">View technical architecture</a>
+        </div>
+        <div class="pill-row">
+          <span class="pill" data-i18n="hero.pill1">Nicaragua first</span>
+          <span class="pill" data-i18n="hero.pill2">WhatsApp-first</span>
+          <span class="pill" data-i18n="hero.pill3">FastAPI + Celery</span>
+          <span class="pill" data-i18n="hero.pill4">Founder-led onboarding</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="kicker" data-i18n="why.kicker">Why this wins</div>
+        <div class="stack-list" style="margin-top:14px;">
+          <div class="stack-item">
+            <strong data-i18n="why.item1.title">Solves a real pain</strong>
+            <div class="muted" data-i18n="why.item1.body">Most small operators are not digitally ready. They do not need another marketplace. They need help getting online and converting tourists.</div>
+          </div>
+          <div class="stack-item">
+            <strong data-i18n="why.item2.title">Avoids the cold-start trap</strong>
+            <div class="muted" data-i18n="why.item2.body">Instead of acquiring both travelers and operators on day one, use existing distribution channels while building operator relationships and structured inventory.</div>
+          </div>
+          <div class="stack-item">
+            <strong data-i18n="why.item3.title">Creates a supply moat</strong>
+            <div class="muted" data-i18n="why.item3.body">You own the intake workflow, the listings data model, the operator education, and eventually the direct booking channel.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">50</div>
+        <div class="label" data-i18n="stats.1">Operators to validate the model in 1 to 2 tourist corridors</div>
+      </div>
+      <div class="stat">
+        <div class="num">&lt; 5 days</div>
+        <div class="label" data-i18n="stats.2">Target time from intake to first live listing</div>
+      </div>
+      <div class="stat">
+        <div class="num">$30–$80</div>
+        <div class="label" data-i18n="stats.3">Initial setup fee per operator</div>
+      </div>
+      <div class="stat">
+        <div class="num">$10–$20</div>
+        <div class="label" data-i18n="stats.4">Monthly retention layer for updates and support</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="thesis">
+      <div class="section-head">
+        <h2 data-i18n="thesis.head">Strategic Thesis</h2>
+        <p data-i18n="thesis.sub">Do not start as a traveler marketplace. Start as the easiest way for local operators to get online, get listed, and become bookable by international demand channels.</p>
+      </div>
+      <div class="compare">
+        <article class="card">
+          <h3 data-i18n="thesis.card1.title">Marketplace-first</h3>
+          <ul class="clean">
+            <li data-i18n="thesis.card1.1">Requires supply and demand at the same time</li>
+            <li data-i18n="thesis.card1.2">Operators must trust unknown traffic</li>
+            <li data-i18n="thesis.card1.3">SEO and brand authority take time</li>
+            <li data-i18n="thesis.card1.4">Hardest model to bootstrap in this category</li>
+          </ul>
+        </article>
+        <article class="card highlight">
+          <h3 data-i18n="thesis.card2.title">Recommended: Tool-first</h3>
+          <ul class="clean">
+            <li data-i18n="thesis.card2.1">Immediate operator value from day one</li>
+            <li data-i18n="thesis.card2.2">Works even if operators have no accounts or content</li>
+            <li data-i18n="thesis.card2.3">Builds dense local supply before marketplace launch</li>
+            <li data-i18n="thesis.card2.4">Creates an infrastructure layer you can expand later</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="thesis.card3.title">Long-term outcome</h3>
+          <ul class="clean">
+            <li data-i18n="thesis.card3.1">Own operator workflows and listing data</li>
+            <li data-i18n="thesis.card3.2">Introduce direct booking as an extra channel</li>
+            <li data-i18n="thesis.card3.3">Launch marketplace with supply already solved</li>
+            <li data-i18n="thesis.card3.4">Compete alongside incumbents, not against them on day one</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="model">
+      <div class="section-head">
+        <h2 data-i18n="model.head">Business Model and Positioning</h2>
+        <p data-i18n="model.sub">The commercial pitch is simple: “We help you appear online and start getting tourists without needing English, a laptop, or complicated forms.”</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3 data-i18n="model.card1.title">Core offer</h3>
+          <ul class="clean">
+            <li data-i18n="model.card1.1">WhatsApp intake via voice notes and photos</li>
+            <li data-i18n="model.card1.2">AI-generated English and Spanish listings</li>
+            <li data-i18n="model.card1.3">Platform-specific copy variants</li>
+            <li data-i18n="model.card1.4">Human-assisted submission and revision support</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="model.card2.title">Who it is for</h3>
+          <ul class="clean">
+            <li data-i18n="model.card2.1">Small operators and informal guides</li>
+            <li data-i18n="model.card2.2">Mobile-first, Spanish-first businesses</li>
+            <li data-i18n="model.card2.3">Tour operators in San Juan del Sur and Granada first</li>
+            <li data-i18n="model.card2.4">Operators who lack structured content or platform knowledge</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="model.card3.title">Why they buy</h3>
+          <ul class="clean">
+            <li data-i18n="model.card3.1">Get online faster</li>
+            <li data-i18n="model.card3.2">Reduce admin and language friction</li>
+            <li data-i18n="model.card3.3">Gain professional listings they can reuse</li>
+            <li data-i18n="model.card3.4">Access ongoing support through a familiar channel</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <div class="section-head">
+        <h2 data-i18n="pricing.head">Hybrid Monetization Framework</h2>
+        <p data-i18n="pricing.sub">Optimize for low-risk operator adoption early, then layer in recurring and transactional revenue once the supply network is healthy.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3 data-i18n="pricing.card1.title">Setup Fee</h3>
+          <div class="price">$30–$80</div>
+          <div class="sub" data-i18n="pricing.card1.sub">Primary early revenue</div>
+          <ul class="clean" style="margin-top:16px;">
+            <li data-i18n="pricing.card1.1">Account setup support</li>
+            <li data-i18n="pricing.card1.2">Listing generation</li>
+            <li data-i18n="pricing.card1.3">Photo and copy cleanup</li>
+            <li data-i18n="pricing.card1.4">Submission assistance</li>
+          </ul>
+        </article>
+        <article class="card highlight">
+          <h3 data-i18n="pricing.card2.title">Monthly Plan</h3>
+          <div class="price">$10–$20</div>
+          <div class="sub" data-i18n="pricing.card2.sub">Retention and support layer</div>
+          <ul class="clean" style="margin-top:16px;">
+            <li data-i18n="pricing.card2.1">Listing edits and pricing updates</li>
+            <li data-i18n="pricing.card2.2">Support via WhatsApp</li>
+            <li data-i18n="pricing.card2.3">New experience additions</li>
+            <li data-i18n="pricing.card2.4">Simple performance check-ins</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="pricing.card3.title">Future Success Fee</h3>
+          <div class="price">5%–10%</div>
+          <div class="sub" data-i18n="pricing.card3.sub">Only when direct booking exists</div>
+          <ul class="clean" style="margin-top:16px;">
+            <li data-i18n="pricing.card3.1">Use on your own direct channel later</li>
+            <li data-i18n="pricing.card3.2">Not required for early operator adoption</li>
+            <li data-i18n="pricing.card3.3">Creates upside without increasing entry friction</li>
+            <li data-i18n="pricing.card3.4">Supports marketplace transition over time</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 data-i18n="gtm.head">Go-to-Market</h2>
+        <p data-i18n="gtm.sub">Density beats breadth. Win one country, then one corridor, then one operator cluster at a time.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3 data-i18n="gtm.card1.title">Geographic wedge</h3>
+          <ul class="clean">
+            <li data-i18n="gtm.card1.1">Start in Nicaragua only</li>
+            <li data-i18n="gtm.card1.2">Prioritize San Juan del Sur</li>
+            <li data-i18n="gtm.card1.3">Then expand into Granada</li>
+            <li data-i18n="gtm.card1.4">Expand to El Salvador and Costa Rica only after density</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="gtm.card2.title">Acquisition channels</h3>
+          <ul class="clean">
+            <li data-i18n="gtm.card2.1">Founder-led field sales</li>
+            <li data-i18n="gtm.card2.2">WhatsApp outreach</li>
+            <li data-i18n="gtm.card2.3">Hostel partnerships</li>
+            <li data-i18n="gtm.card2.4">Facebook and Instagram discovery</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="gtm.card3.title">Sales hook</h3>
+          <div class="code-block" data-i18n="gtm.script">“Te ayudamos a aparecer en plataformas globales sin que tengas que hacer nada técnico. Solo nos mandas la info por WhatsApp.”</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="ux">
+      <div class="section-head">
+        <h2 data-i18n="ux.head">Operator UX Flow</h2>
+        <p data-i18n="ux.sub">The product should feel like a platform, but behave like a service whenever friction appears. Every key screen follows a header → content → action pattern.</p>
+      </div>
+      <div class="workflow">
+        <article class="workflow-step">
+          <div class="step-num">1</div>
+          <div>
+            <h4 data-i18n="ux.step1.title">WhatsApp Intake</h4>
+            <p class="muted" data-i18n="ux.step1.body">Start in the lowest-friction channel. Ask for a voice note, photos, price, duration, and location.</p>
+            <div class="mini-ux">
+              <div><strong data-i18n="ux.header">Header</strong><span data-i18n="ux.step1.hca1">Tell me about your tour</span></div>
+              <div><strong data-i18n="ux.content">Content</strong><span data-i18n="ux.step1.hca2">Audio prompt, photo upload, basic facts</span></div>
+              <div><strong data-i18n="ux.action">Action</strong><span data-i18n="ux.step1.hca3">Send details</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="workflow-step">
+          <div class="step-num">2</div>
+          <div>
+            <h4 data-i18n="ux.step2.title">AI Structuring</h4>
+            <p class="muted" data-i18n="ux.step2.body">Transcribe, normalize, enrich, translate, and generate platform-ready content from raw operator inputs.</p>
+            <div class="mini-ux">
+              <div><strong data-i18n="ux.header">Header</strong><span data-i18n="ux.step2.hca1">Processing your tour</span></div>
+              <div><strong data-i18n="ux.content">Content</strong><span data-i18n="ux.step2.hca2">Voice to text, photos, structured fields</span></div>
+              <div><strong data-i18n="ux.action">Action</strong><span data-i18n="ux.step2.hca3">Status only</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="workflow-step">
+          <div class="step-num">3</div>
+          <div>
+            <h4 data-i18n="ux.step3.title">Review Page</h4>
+            <p class="muted" data-i18n="ux.step3.body">Send a clean web link back to WhatsApp so operators can preview and approve the final version without needing a full dashboard.</p>
+            <div class="mini-ux">
+              <div><strong data-i18n="ux.header">Header</strong><span data-i18n="ux.step3.hca1">Your tour is ready</span></div>
+              <div><strong data-i18n="ux.content">Content</strong><span data-i18n="ux.step3.hca2">Title, photos, itinerary, price, language variants</span></div>
+              <div><strong data-i18n="ux.action">Action</strong><span data-i18n="ux.step3.hca3">Approve or edit via WhatsApp</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="workflow-step">
+          <div class="step-num">4</div>
+          <div>
+            <h4 data-i18n="ux.step4.title">Submission and Assistance</h4>
+            <p class="muted" data-i18n="ux.step4.body">Let operators choose where they want help first. When identity checks or account steps become hard, shift seamlessly into human assistance.</p>
+            <div class="mini-ux">
+              <div><strong data-i18n="ux.header">Header</strong><span data-i18n="ux.step4.hca1">Choose channels</span></div>
+              <div><strong data-i18n="ux.content">Content</strong><span data-i18n="ux.step4.hca2">Benefits, requirements, account readiness</span></div>
+              <div><strong data-i18n="ux.action">Action</strong><span data-i18n="ux.step4.hca3">Select and continue</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="workflow-step">
+          <div class="step-num">5</div>
+          <div>
+            <h4 data-i18n="ux.step5.title">Status and Success</h4>
+            <p class="muted" data-i18n="ux.step5.body">Operators need visible proof that they are progressing. The most important conversion moment is the first live listing.</p>
+            <div class="mini-ux">
+              <div><strong data-i18n="ux.header">Header</strong><span data-i18n="ux.step5.hca1">You are live</span></div>
+              <div><strong data-i18n="ux.content">Content</strong><span data-i18n="ux.step5.hca2">Live links, revisions needed, next steps</span></div>
+              <div><strong data-i18n="ux.action">Action</strong><span data-i18n="ux.step5.hca3">Share link or refer another operator</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 data-i18n="traveler.head">Traveler Layer, Later</h2>
+        <p data-i18n="traveler.sub">Do not build the full marketplace first. Still, design your data model so a lightweight booking surface can be added once supply is dense.</p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <h3 data-i18n="traveler.card1.title">Discovery page</h3>
+          <div class="mini-ux" style="grid-template-columns: repeat(3, 1fr);">
+            <div><strong data-i18n="ux.header">Header</strong><span data-i18n="traveler.card1.1">Find authentic local experiences</span></div>
+            <div><strong data-i18n="ux.content">Content</strong><span data-i18n="traveler.card1.2">Location, price, category, cards</span></div>
+            <div><strong data-i18n="ux.action">Action</strong><span data-i18n="traveler.card1.3">Book now</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3 data-i18n="traveler.card2.title">Experience page</h3>
+          <div class="mini-ux" style="grid-template-columns: repeat(3, 1fr);">
+            <div><strong data-i18n="ux.header">Header</strong><span data-i18n="traveler.card2.1">Tour title and social proof</span></div>
+            <div><strong data-i18n="ux.content">Content</strong><span data-i18n="traveler.card2.2">Itinerary, images, inclusions, operator profile</span></div>
+            <div><strong data-i18n="ux.action">Action</strong><span data-i18n="traveler.card2.3">Reserve experience</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="section-head">
+        <h2 data-i18n="arch.head">Technical Architecture</h2>
+        <p data-i18n="arch.sub">Production-minded from the start, but still lean enough for a founder-led rollout. The system is a workflow engine, not a simple CRUD app.</p>
+      </div>
+      <div class="arch-grid">
+        <article class="card">
+          <h3 data-i18n="arch.card1.title">Frontend</h3>
+          <ul class="clean">
+            <li data-i18n="arch.card1.1">Next.js App Router</li>
+            <li data-i18n="arch.card1.2">Tailwind or similar utility styling</li>
+            <li data-i18n="arch.card1.3">Web review pages</li>
+            <li data-i18n="arch.card1.4">Internal ops dashboard</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="arch.card2.title">Backend</h3>
+          <ul class="clean">
+            <li data-i18n="arch.card2.1">FastAPI for typed APIs</li>
+            <li data-i18n="arch.card2.2">PostgreSQL as source of truth</li>
+            <li data-i18n="arch.card2.3">Redis as queue broker</li>
+            <li data-i18n="arch.card2.4">Celery for background tasks</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="arch.card3.title">Async pipeline</h3>
+          <div class="code-block" data-i18n="arch.pipeline">Raw WhatsApp input
+→ transcription
+→ extraction schema
+→ enrichment
+→ translation
+→ platform-specific generation
+→ human review
+→ submission tracking</div>
+        </article>
+      </div>
+      <div class="grid-2" style="margin-top:16px;">
+        <article class="card">
+          <h3 data-i18n="arch.card4.title">Canonical data model</h3>
+          <div class="code-block" data-i18n="arch.model">Operator
+- id
+- name
+- phone
+- location
+- onboarding_status
+
+Experience
+- id
+- operator_id
+- raw_input
+- structured_data
+- status
+
+Listing
+- id
+- experience_id
+- platform
+- status
+- live_url</div>
+        </article>
+        <article class="card">
+          <h3 data-i18n="arch.card5.title">Queue strategy</h3>
+          <div class="code-block" data-i18n="arch.queue">Queues
+- ingest
+- media
+- ai_extract
+- ai_generate
+- notifications
+
+Rule
+- keep domain logic in services
+- keep Celery tasks thin
+- make every step idempotent</div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 data-i18n="ai.head">AI Pipeline Blueprint</h2>
+        <p data-i18n="ai.sub">The moat is not a single prompt. It is a structured pipeline with validation, normalization, and repeatable schemas at every stage.</p>
+      </div>
+      <div class="grid-4">
+        <article class="card">
+          <h3 data-i18n="ai.card1.title">1. Transcribe</h3>
+          <p class="muted" data-i18n="ai.card1.body">Convert operator voice notes into clean Spanish text.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="ai.card2.title">2. Extract</h3>
+          <p class="muted" data-i18n="ai.card2.body">Normalize location, price, duration, highlights, inclusions, and itinerary into a canonical schema.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="ai.card3.title">3. Enrich + Translate</h3>
+          <p class="muted" data-i18n="ai.card3.body">Clarify structure, fill formatting gaps, and create strong English versions without sounding robotic.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="ai.card4.title">4. Platform Variants</h3>
+          <p class="muted" data-i18n="ai.card4.body">Generate channel-specific versions optimized for different listing styles and review needs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="section-head">
+        <h2 data-i18n="roadmap.head">Execution Roadmap</h2>
+        <p data-i18n="roadmap.sub">Build the backbone quickly, then validate in the field with direct operator onboarding. This is an execution business before it becomes a software business.</p>
+      </div>
+      <div class="roadmap">
+        <article class="milestone">
+          <div class="tag" data-i18n="roadmap.m1.tag">Weeks 1–2</div>
+          <h3 data-i18n="roadmap.m1.title">Foundations</h3>
+          <ul class="clean">
+            <li data-i18n="roadmap.m1.1">Set up Next.js app, FastAPI service, Postgres, Redis, and Celery</li>
+            <li data-i18n="roadmap.m1.2">Create WhatsApp webhook ingestion</li>
+            <li data-i18n="roadmap.m1.3">Persist raw assets and operator records</li>
+          </ul>
+        </article>
+        <article class="milestone">
+          <div class="tag" data-i18n="roadmap.m2.tag">Weeks 3–4</div>
+          <h3 data-i18n="roadmap.m2.title">Structured AI Pipeline</h3>
+          <ul class="clean">
+            <li data-i18n="roadmap.m2.1">Implement transcription and extraction workflow</li>
+            <li data-i18n="roadmap.m2.2">Build translation and listing generation steps</li>
+            <li data-i18n="roadmap.m2.3">Create operator review page and approval loop</li>
+          </ul>
+        </article>
+        <article class="milestone">
+          <div class="tag" data-i18n="roadmap.m3.tag">Week 5</div>
+          <h3 data-i18n="roadmap.m3.title">Internal Ops Dashboard</h3>
+          <ul class="clean">
+            <li data-i18n="roadmap.m3.1">Pipeline board for statuses and handoffs</li>
+            <li data-i18n="roadmap.m3.2">Editable experience preview</li>
+            <li data-i18n="roadmap.m3.3">Submission and revision tracker</li>
+          </ul>
+        </article>
+        <article class="milestone">
+          <div class="tag" data-i18n="roadmap.m4.tag">Week 6</div>
+          <h3 data-i18n="roadmap.m4.title">Pilot Launch</h3>
+          <ul class="clean">
+            <li data-i18n="roadmap.m4.1">Founder handles the first 10 to 15 operators directly</li>
+            <li data-i18n="roadmap.m4.2">Use discounted onboarding to accelerate learning</li>
+            <li data-i18n="roadmap.m4.3">Track time to first live listing and operator objections</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 data-i18n="playbook.head">First 50 Operators Playbook</h2>
+        <p data-i18n="playbook.sub">Keep this painfully focused. The goal is not national scale. The goal is a repeatable operator acquisition and fulfillment motion in one country.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3 data-i18n="playbook.card1.title">Daily motion</h3>
+          <ul class="clean">
+            <li data-i18n="playbook.card1.1">Contact 5 to 10 operators per day</li>
+            <li data-i18n="playbook.card1.2">Mix in-person visits and WhatsApp follow-ups</li>
+            <li data-i18n="playbook.card1.3">Use hostels as referral hubs</li>
+            <li data-i18n="playbook.card1.4">Document objections and pricing sensitivity</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="playbook.card2.title">Metrics</h3>
+          <ul class="clean">
+            <li data-i18n="playbook.card2.1">Operators contacted</li>
+            <li data-i18n="playbook.card2.2">Operators onboarded</li>
+            <li data-i18n="playbook.card2.3">Listings generated</li>
+            <li data-i18n="playbook.card2.4">Listings live</li>
+            <li data-i18n="playbook.card2.5">Time to first live listing</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="playbook.card3.title">Early retention trigger</h3>
+          <ul class="clean">
+            <li data-i18n="playbook.card3.1">Show operators their live links fast</li>
+            <li data-i18n="playbook.card3.2">Use proof of progress to generate referrals</li>
+            <li data-i18n="playbook.card3.3">Capture testimonials and screenshots</li>
+            <li data-i18n="playbook.card3.4">Offer one free month for successful referrals</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 data-i18n="notyet.head">What Not to Build Yet</h2>
+        <p data-i18n="notyet.sub">Protect velocity by refusing work that looks attractive but does not change the first 50-operator outcome.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3 data-i18n="notyet.card1.title">Do not overbuild</h3>
+          <ul class="clean">
+            <li data-i18n="notyet.card1.1">No complex traveler marketplace</li>
+            <li data-i18n="notyet.card1.2">No deep channel manager logic</li>
+            <li data-i18n="notyet.card1.3">No large operator self-serve dashboard</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="notyet.card2.title">Keep service where needed</h3>
+          <ul class="clean">
+            <li data-i18n="notyet.card2.1">Account creation help</li>
+            <li data-i18n="notyet.card2.2">Identity check support</li>
+            <li data-i18n="notyet.card2.3">Rejected listing revisions</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="notyet.card3.title">Optimize for learning</h3>
+          <ul class="clean">
+            <li data-i18n="notyet.card3.1">Fast feedback loops</li>
+            <li data-i18n="notyet.card3.2">Consistent intake scripts</li>
+            <li data-i18n="notyet.card3.3">Structured internal status tracking</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 data-i18n="final.head">Final Positioning Statement</h2>
+        <p data-i18n="final.sub">The product should be understood as operator infrastructure first, then distribution acceleration, then direct booking. That sequencing is the strategy.</p>
+      </div>
+      <div class="section-panel card">
+        <div class="code-block" data-i18n="final.block">We are building the onboarding and growth layer for local tour operators in Central America.
+
+Phase 1: get operators online and listed.
+Phase 2: help them maintain and improve those listings.
+Phase 3: add direct distribution and booking.
+Phase 4: launch a marketplace with real supply density already in place.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <div class="card" data-i18n="footer.text">
+      Built from the strategy discussion: Nicaragua-first, WhatsApp-first, hybrid service + platform, FastAPI backend, Celery workers, structured AI pipeline, and founder-led supply activation.
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "brand.title": "Tour Operator Growth Engine",
+        "brand.subtitle": "Nicaragua-first product strategy",
+        "nav.thesis": "Thesis",
+        "nav.model": "Business Model",
+        "nav.ux": "UX Flows",
+        "nav.architecture": "Architecture",
+        "nav.roadmap": "Roadmap",
+        "nav.pricing": "Pricing",
+        "hero.eyebrow": "Strategic plan • Tool-first → Marketplace-later",
+        "hero.title": "Build the operator infrastructure layer for tours in Central America",
+        "hero.lead": "Start in Nicaragua with a service-backed, WhatsApp-first platform that helps tour operators go from zero digital presence to live listings on global travel platforms. Use AI to structure voice notes, photos, and rough details into platform-ready listings, then layer in a lightweight marketplace once supply density is real.",
+        "hero.cta1": "See execution plan",
+        "hero.cta2": "View technical architecture",
+        "hero.pill1": "Nicaragua first",
+        "hero.pill2": "WhatsApp-first",
+        "hero.pill3": "FastAPI + Celery",
+        "hero.pill4": "Founder-led onboarding",
+        "why.kicker": "Why this wins",
+        "why.item1.title": "Solves a real pain",
+        "why.item1.body": "Most small operators are not digitally ready. They do not need another marketplace. They need help getting online and converting tourists.",
+        "why.item2.title": "Avoids the cold-start trap",
+        "why.item2.body": "Instead of acquiring both travelers and operators on day one, use existing distribution channels while building operator relationships and structured inventory.",
+        "why.item3.title": "Creates a supply moat",
+        "why.item3.body": "You own the intake workflow, the listings data model, the operator education, and eventually the direct booking channel.",
+        "stats.1": "Operators to validate the model in 1 to 2 tourist corridors",
+        "stats.2": "Target time from intake to first live listing",
+        "stats.3": "Initial setup fee per operator",
+        "stats.4": "Monthly retention layer for updates and support",
+        "thesis.head": "Strategic Thesis",
+        "thesis.sub": "Do not start as a traveler marketplace. Start as the easiest way for local operators to get online, get listed, and become bookable by international demand channels.",
+        "thesis.card1.title": "Marketplace-first",
+        "thesis.card1.1": "Requires supply and demand at the same time",
+        "thesis.card1.2": "Operators must trust unknown traffic",
+        "thesis.card1.3": "SEO and brand authority take time",
+        "thesis.card1.4": "Hardest model to bootstrap in this category",
+        "thesis.card2.title": "Recommended: Tool-first",
+        "thesis.card2.1": "Immediate operator value from day one",
+        "thesis.card2.2": "Works even if operators have no accounts or content",
+        "thesis.card2.3": "Builds dense local supply before marketplace launch",
+        "thesis.card2.4": "Creates an infrastructure layer you can expand later",
+        "thesis.card3.title": "Long-term outcome",
+        "thesis.card3.1": "Own operator workflows and listing data",
+        "thesis.card3.2": "Introduce direct booking as an extra channel",
+        "thesis.card3.3": "Launch marketplace with supply already solved",
+        "thesis.card3.4": "Compete alongside incumbents, not against them on day one",
+        "model.head": "Business Model and Positioning",
+        "model.sub": "The commercial pitch is simple: “We help you appear online and start getting tourists without needing English, a laptop, or complicated forms.”",
+        "model.card1.title": "Core offer",
+        "model.card1.1": "WhatsApp intake via voice notes and photos",
+        "model.card1.2": "AI-generated English and Spanish listings",
+        "model.card1.3": "Platform-specific copy variants",
+        "model.card1.4": "Human-assisted submission and revision support",
+        "model.card2.title": "Who it is for",
+        "model.card2.1": "Small operators and informal guides",
+        "model.card2.2": "Mobile-first, Spanish-first businesses",
+        "model.card2.3": "Tour operators in San Juan del Sur and Granada first",
+        "model.card2.4": "Operators who lack structured content or platform knowledge",
+        "model.card3.title": "Why they buy",
+        "model.card3.1": "Get online faster",
+        "model.card3.2": "Reduce admin and language friction",
+        "model.card3.3": "Gain professional listings they can reuse",
+        "model.card3.4": "Access ongoing support through a familiar channel",
+        "pricing.head": "Hybrid Monetization Framework",
+        "pricing.sub": "Optimize for low-risk operator adoption early, then layer in recurring and transactional revenue once the supply network is healthy.",
+        "pricing.card1.title": "Setup Fee",
+        "pricing.card1.sub": "Primary early revenue",
+        "pricing.card1.1": "Account setup support",
+        "pricing.card1.2": "Listing generation",
+        "pricing.card1.3": "Photo and copy cleanup",
+        "pricing.card1.4": "Submission assistance",
+        "pricing.card2.title": "Monthly Plan",
+        "pricing.card2.sub": "Retention and support layer",
+        "pricing.card2.1": "Listing edits and pricing updates",
+        "pricing.card2.2": "Support via WhatsApp",
+        "pricing.card2.3": "New experience additions",
+        "pricing.card2.4": "Simple performance check-ins",
+        "pricing.card3.title": "Future Success Fee",
+        "pricing.card3.sub": "Only when direct booking exists",
+        "pricing.card3.1": "Use on your own direct channel later",
+        "pricing.card3.2": "Not required for early operator adoption",
+        "pricing.card3.3": "Creates upside without increasing entry friction",
+        "pricing.card3.4": "Supports marketplace transition over time",
+        "gtm.head": "Go-to-Market",
+        "gtm.sub": "Density beats breadth. Win one country, then one corridor, then one operator cluster at a time.",
+        "gtm.card1.title": "Geographic wedge",
+        "gtm.card1.1": "Start in Nicaragua only",
+        "gtm.card1.2": "Prioritize San Juan del Sur",
+        "gtm.card1.3": "Then expand into Granada",
+        "gtm.card1.4": "Expand to El Salvador and Costa Rica only after density",
+        "gtm.card2.title": "Acquisition channels",
+        "gtm.card2.1": "Founder-led field sales",
+        "gtm.card2.2": "WhatsApp outreach",
+        "gtm.card2.3": "Hostel partnerships",
+        "gtm.card2.4": "Facebook and Instagram discovery",
+        "gtm.card3.title": "Sales hook",
+        "gtm.script": "“We help you appear on global platforms without needing to do anything technical. Just send us the info on WhatsApp.”",
+        "ux.head": "Operator UX Flow",
+        "ux.sub": "The product should feel like a platform, but behave like a service whenever friction appears. Every key screen follows a header → content → action pattern.",
+        "ux.header": "Header",
+        "ux.content": "Content",
+        "ux.action": "Action",
+        "ux.step1.title": "WhatsApp Intake",
+        "ux.step1.body": "Start in the lowest-friction channel. Ask for a voice note, photos, price, duration, and location.",
+        "ux.step1.hca1": "Tell me about your tour",
+        "ux.step1.hca2": "Audio prompt, photo upload, basic facts",
+        "ux.step1.hca3": "Send details",
+        "ux.step2.title": "AI Structuring",
+        "ux.step2.body": "Transcribe, normalize, enrich, translate, and generate platform-ready content from raw operator inputs.",
+        "ux.step2.hca1": "Processing your tour",
+        "ux.step2.hca2": "Voice to text, photos, structured fields",
+        "ux.step2.hca3": "Status only",
+        "ux.step3.title": "Review Page",
+        "ux.step3.body": "Send a clean web link back to WhatsApp so operators can preview and approve the final version without needing a full dashboard.",
+        "ux.step3.hca1": "Your tour is ready",
+        "ux.step3.hca2": "Title, photos, itinerary, price, language variants",
+        "ux.step3.hca3": "Approve or edit via WhatsApp",
+        "ux.step4.title": "Submission and Assistance",
+        "ux.step4.body": "Let operators choose where they want help first. When identity checks or account steps become hard, shift seamlessly into human assistance.",
+        "ux.step4.hca1": "Choose channels",
+        "ux.step4.hca2": "Benefits, requirements, account readiness",
+        "ux.step4.hca3": "Select and continue",
+        "ux.step5.title": "Status and Success",
+        "ux.step5.body": "Operators need visible proof that they are progressing. The most important conversion moment is the first live listing.",
+        "ux.step5.hca1": "You are live",
+        "ux.step5.hca2": "Live links, revisions needed, next steps",
+        "ux.step5.hca3": "Share link or refer another operator",
+        "traveler.head": "Traveler Layer, Later",
+        "traveler.sub": "Do not build the full marketplace first. Still, design your data model so a lightweight booking surface can be added once supply is dense.",
+        "traveler.card1.title": "Discovery page",
+        "traveler.card1.1": "Find authentic local experiences",
+        "traveler.card1.2": "Location, price, category, cards",
+        "traveler.card1.3": "Book now",
+        "traveler.card2.title": "Experience page",
+        "traveler.card2.1": "Tour title and social proof",
+        "traveler.card2.2": "Itinerary, images, inclusions, operator profile",
+        "traveler.card2.3": "Reserve experience",
+        "arch.head": "Technical Architecture",
+        "arch.sub": "Production-minded from the start, but still lean enough for a founder-led rollout. The system is a workflow engine, not a simple CRUD app.",
+        "arch.card1.title": "Frontend",
+        "arch.card1.1": "Next.js App Router",
+        "arch.card1.2": "Tailwind or similar utility styling",
+        "arch.card1.3": "Web review pages",
+        "arch.card1.4": "Internal ops dashboard",
+        "arch.card2.title": "Backend",
+        "arch.card2.1": "FastAPI for typed APIs",
+        "arch.card2.2": "PostgreSQL as source of truth",
+        "arch.card2.3": "Redis as queue broker",
+        "arch.card2.4": "Celery for background tasks",
+        "arch.card3.title": "Async pipeline",
+        "arch.pipeline": "Raw WhatsApp input\n→ transcription\n→ extraction schema\n→ enrichment\n→ translation\n→ platform-specific generation\n→ human review\n→ submission tracking",
+        "arch.card4.title": "Canonical data model",
+        "arch.model": "Operator\n- id\n- name\n- phone\n- location\n- onboarding_status\n\nExperience\n- id\n- operator_id\n- raw_input\n- structured_data\n- status\n\nListing\n- id\n- experience_id\n- platform\n- status\n- live_url",
+        "arch.card5.title": "Queue strategy",
+        "arch.queue": "Queues\n- ingest\n- media\n- ai_extract\n- ai_generate\n- notifications\n\nRule\n- keep domain logic in services\n- keep Celery tasks thin\n- make every step idempotent",
+        "ai.head": "AI Pipeline Blueprint",
+        "ai.sub": "The moat is not a single prompt. It is a structured pipeline with validation, normalization, and repeatable schemas at every stage.",
+        "ai.card1.title": "1. Transcribe",
+        "ai.card1.body": "Convert operator voice notes into clean Spanish text.",
+        "ai.card2.title": "2. Extract",
+        "ai.card2.body": "Normalize location, price, duration, highlights, inclusions, and itinerary into a canonical schema.",
+        "ai.card3.title": "3. Enrich + Translate",
+        "ai.card3.body": "Clarify structure, fill formatting gaps, and create strong English versions without sounding robotic.",
+        "ai.card4.title": "4. Platform Variants",
+        "ai.card4.body": "Generate channel-specific versions optimized for different listing styles and review needs.",
+        "roadmap.head": "Execution Roadmap",
+        "roadmap.sub": "Build the backbone quickly, then validate in the field with direct operator onboarding. This is an execution business before it becomes a software business.",
+        "roadmap.m1.tag": "Weeks 1–2",
+        "roadmap.m1.title": "Foundations",
+        "roadmap.m1.1": "Set up Next.js app, FastAPI service, Postgres, Redis, and Celery",
+        "roadmap.m1.2": "Create WhatsApp webhook ingestion",
+        "roadmap.m1.3": "Persist raw assets and operator records",
+        "roadmap.m2.tag": "Weeks 3–4",
+        "roadmap.m2.title": "Structured AI Pipeline",
+        "roadmap.m2.1": "Implement transcription and extraction workflow",
+        "roadmap.m2.2": "Build translation and listing generation steps",
+        "roadmap.m2.3": "Create operator review page and approval loop",
+        "roadmap.m3.tag": "Week 5",
+        "roadmap.m3.title": "Internal Ops Dashboard",
+        "roadmap.m3.1": "Pipeline board for statuses and handoffs",
+        "roadmap.m3.2": "Editable experience preview",
+        "roadmap.m3.3": "Submission and revision tracker",
+        "roadmap.m4.tag": "Week 6",
+        "roadmap.m4.title": "Pilot Launch",
+        "roadmap.m4.1": "Founder handles the first 10 to 15 operators directly",
+        "roadmap.m4.2": "Use discounted onboarding to accelerate learning",
+        "roadmap.m4.3": "Track time to first live listing and operator objections",
+        "playbook.head": "First 50 Operators Playbook",
+        "playbook.sub": "Keep this painfully focused. The goal is not national scale. The goal is a repeatable operator acquisition and fulfillment motion in one country.",
+        "playbook.card1.title": "Daily motion",
+        "playbook.card1.1": "Contact 5 to 10 operators per day",
+        "playbook.card1.2": "Mix in-person visits and WhatsApp follow-ups",
+        "playbook.card1.3": "Use hostels as referral hubs",
+        "playbook.card1.4": "Document objections and pricing sensitivity",
+        "playbook.card2.title": "Metrics",
+        "playbook.card2.1": "Operators contacted",
+        "playbook.card2.2": "Operators onboarded",
+        "playbook.card2.3": "Listings generated",
+        "playbook.card2.4": "Listings live",
+        "playbook.card2.5": "Time to first live listing",
+        "playbook.card3.title": "Early retention trigger",
+        "playbook.card3.1": "Show operators their live links fast",
+        "playbook.card3.2": "Use proof of progress to generate referrals",
+        "playbook.card3.3": "Capture testimonials and screenshots",
+        "playbook.card3.4": "Offer one free month for successful referrals",
+        "notyet.head": "What Not to Build Yet",
+        "notyet.sub": "Protect velocity by refusing work that looks attractive but does not change the first 50-operator outcome.",
+        "notyet.card1.title": "Do not overbuild",
+        "notyet.card1.1": "No complex traveler marketplace",
+        "notyet.card1.2": "No deep channel manager logic",
+        "notyet.card1.3": "No large operator self-serve dashboard",
+        "notyet.card2.title": "Keep service where needed",
+        "notyet.card2.1": "Account creation help",
+        "notyet.card2.2": "Identity check support",
+        "notyet.card2.3": "Rejected listing revisions",
+        "notyet.card3.title": "Optimize for learning",
+        "notyet.card3.1": "Fast feedback loops",
+        "notyet.card3.2": "Consistent intake scripts",
+        "notyet.card3.3": "Structured internal status tracking",
+        "final.head": "Final Positioning Statement",
+        "final.sub": "The product should be understood as operator infrastructure first, then distribution acceleration, then direct booking. That sequencing is the strategy.",
+        "final.block": "We are building the onboarding and growth layer for local tour operators in Central America.\n\nPhase 1: get operators online and listed.\nPhase 2: help them maintain and improve those listings.\nPhase 3: add direct distribution and booking.\nPhase 4: launch a marketplace with real supply density already in place.",
+        "footer.text": "Built from the strategy discussion: Nicaragua-first, WhatsApp-first, hybrid service + platform, FastAPI backend, Celery workers, structured AI pipeline, and founder-led supply activation."
+      },
+      es: {
+        "brand.title": "Motor de Crecimiento para Operadores Turísticos",
+        "brand.subtitle": "Estrategia de producto con enfoque inicial en Nicaragua",
+        "nav.thesis": "Tesis",
+        "nav.model": "Modelo de Negocio",
+        "nav.ux": "Flujos UX",
+        "nav.architecture": "Arquitectura",
+        "nav.roadmap": "Roadmap",
+        "nav.pricing": "Precios",
+        "hero.eyebrow": "Plan estratégico • Herramienta primero → Marketplace después",
+        "hero.title": "Construye la capa de infraestructura para operadores turísticos en Centroamérica",
+        "hero.lead": "Empieza en Nicaragua con una plataforma respaldada por servicio y diseñada alrededor de WhatsApp que ayude a los operadores turísticos a pasar de cero presencia digital a listings en vivo en plataformas globales de viaje. Usa IA para estructurar notas de voz, fotos y detalles sueltos en listings listos para cada canal, y luego agrega un marketplace ligero cuando la densidad de oferta sea real.",
+        "hero.cta1": "Ver plan de ejecución",
+        "hero.cta2": "Ver arquitectura técnica",
+        "hero.pill1": "Nicaragua primero",
+        "hero.pill2": "WhatsApp primero",
+        "hero.pill3": "FastAPI + Celery",
+        "hero.pill4": "Onboarding liderado por fundador",
+        "why.kicker": "Por qué esto gana",
+        "why.item1.title": "Resuelve un dolor real",
+        "why.item1.body": "La mayoría de los operadores pequeños no están listos digitalmente. No necesitan otro marketplace. Necesitan ayuda para ponerse en línea y convertir turistas.",
+        "why.item2.title": "Evita la trampa del cold start",
+        "why.item2.body": "En lugar de adquirir viajeros y operadores al mismo tiempo desde el día uno, usa canales de distribución existentes mientras construyes relaciones con operadores e inventario estructurado.",
+        "why.item3.title": "Crea un moat de oferta",
+        "why.item3.body": "Controlas el flujo de captura, el modelo de datos de listings, la educación del operador y, con el tiempo, el canal de reservas directas.",
+        "stats.1": "Operadores para validar el modelo en 1 o 2 corredores turísticos",
+        "stats.2": "Tiempo objetivo desde la captura hasta el primer listing en vivo",
+        "stats.3": "Tarifa inicial de configuración por operador",
+        "stats.4": "Capa mensual de retención para actualizaciones y soporte",
+        "thesis.head": "Tesis Estratégica",
+        "thesis.sub": "No empieces como un marketplace para viajeros. Empieza como la forma más fácil para que los operadores locales entren en línea, publiquen sus tours y se vuelvan reservables para canales internacionales de demanda.",
+        "thesis.card1.title": "Marketplace primero",
+        "thesis.card1.1": "Requiere oferta y demanda al mismo tiempo",
+        "thesis.card1.2": "Los operadores deben confiar en tráfico desconocido",
+        "thesis.card1.3": "SEO y autoridad de marca toman tiempo",
+        "thesis.card1.4": "Es el modelo más difícil de arrancar en esta categoría",
+        "thesis.card2.title": "Recomendado: herramienta primero",
+        "thesis.card2.1": "Valor inmediato para el operador desde el día uno",
+        "thesis.card2.2": "Funciona incluso si los operadores no tienen cuentas ni contenido",
+        "thesis.card2.3": "Construye oferta local densa antes del lanzamiento del marketplace",
+        "thesis.card2.4": "Crea una capa de infraestructura que luego puedes expandir",
+        "thesis.card3.title": "Resultado a largo plazo",
+        "thesis.card3.1": "Controlar los flujos del operador y los datos de listings",
+        "thesis.card3.2": "Introducir reservas directas como canal adicional",
+        "thesis.card3.3": "Lanzar el marketplace con la oferta ya resuelta",
+        "thesis.card3.4": "Competir junto a los incumbentes, no contra ellos desde el día uno",
+        "model.head": "Modelo de Negocio y Posicionamiento",
+        "model.sub": "El pitch comercial es simple: “Te ayudamos a aparecer en línea y empezar a recibir turistas sin necesitar inglés, laptop ni formularios complicados.”",
+        "model.card1.title": "Oferta principal",
+        "model.card1.1": "Captura por WhatsApp mediante notas de voz y fotos",
+        "model.card1.2": "Listings generados por IA en inglés y español",
+        "model.card1.3": "Variantes de copy específicas por plataforma",
+        "model.card1.4": "Soporte humano para publicación y revisiones",
+        "model.card2.title": "Para quién es",
+        "model.card2.1": "Operadores pequeños y guías informales",
+        "model.card2.2": "Negocios mobile-first y Spanish-first",
+        "model.card2.3": "Operadores turísticos primero en San Juan del Sur y Granada",
+        "model.card2.4": "Operadores que carecen de contenido estructurado o conocimiento de plataformas",
+        "model.card3.title": "Por qué compran",
+        "model.card3.1": "Entran en línea más rápido",
+        "model.card3.2": "Reducen fricción administrativa y de idioma",
+        "model.card3.3": "Obtienen listings profesionales reutilizables",
+        "model.card3.4": "Acceden a soporte continuo por un canal familiar",
+        "pricing.head": "Framework Híbrido de Monetización",
+        "pricing.sub": "Optimiza para una adopción temprana de bajo riesgo por parte de los operadores y luego agrega ingresos recurrentes y transaccionales cuando la red de oferta esté sana.",
+        "pricing.card1.title": "Tarifa de configuración",
+        "pricing.card1.sub": "Ingreso principal al inicio",
+        "pricing.card1.1": "Soporte para creación de cuentas",
+        "pricing.card1.2": "Generación del listing",
+        "pricing.card1.3": "Limpieza de fotos y copy",
+        "pricing.card1.4": "Asistencia de publicación",
+        "pricing.card2.title": "Plan mensual",
+        "pricing.card2.sub": "Capa de retención y soporte",
+        "pricing.card2.1": "Ediciones del listing y actualización de precios",
+        "pricing.card2.2": "Soporte vía WhatsApp",
+        "pricing.card2.3": "Nuevas experiencias",
+        "pricing.card2.4": "Revisiones simples de desempeño",
+        "pricing.card3.title": "Comisión futura por éxito",
+        "pricing.card3.sub": "Solo cuando exista reserva directa",
+        "pricing.card3.1": "Úsala después en tu propio canal directo",
+        "pricing.card3.2": "No es necesaria para la adopción temprana",
+        "pricing.card3.3": "Crea upside sin aumentar la fricción de entrada",
+        "pricing.card3.4": "Apoya la transición al marketplace con el tiempo",
+        "gtm.head": "Go-to-Market",
+        "gtm.sub": "La densidad le gana a la amplitud. Gana un país, luego un corredor y luego un clúster de operadores a la vez.",
+        "gtm.card1.title": "Cuña geográfica",
+        "gtm.card1.1": "Empieza solo en Nicaragua",
+        "gtm.card1.2": "Prioriza San Juan del Sur",
+        "gtm.card1.3": "Luego expande a Granada",
+        "gtm.card1.4": "Expande a El Salvador y Costa Rica solo después de lograr densidad",
+        "gtm.card2.title": "Canales de adquisición",
+        "gtm.card2.1": "Ventas de campo lideradas por fundador",
+        "gtm.card2.2": "Outreach por WhatsApp",
+        "gtm.card2.3": "Alianzas con hostales",
+        "gtm.card2.4": "Descubrimiento en Facebook e Instagram",
+        "gtm.card3.title": "Gancho de ventas",
+        "gtm.script": "“Te ayudamos a aparecer en plataformas globales sin que tengas que hacer nada técnico. Solo nos mandas la info por WhatsApp.”",
+        "ux.head": "Flujo UX del Operador",
+        "ux.sub": "El producto debe sentirse como plataforma, pero comportarse como servicio cada vez que aparezca fricción. Cada pantalla clave sigue un patrón de encabezado → contenido → acción.",
+        "ux.header": "Encabezado",
+        "ux.content": "Contenido",
+        "ux.action": "Acción",
+        "ux.step1.title": "Captura por WhatsApp",
+        "ux.step1.body": "Empieza en el canal de menor fricción. Pide una nota de voz, fotos, precio, duración y ubicación.",
+        "ux.step1.hca1": "Cuéntame sobre tu tour",
+        "ux.step1.hca2": "Prompt de audio, subida de fotos y datos básicos",
+        "ux.step1.hca3": "Enviar detalles",
+        "ux.step2.title": "Estructuración con IA",
+        "ux.step2.body": "Transcribe, normaliza, enriquece, traduce y genera contenido listo para cada plataforma a partir de insumos crudos del operador.",
+        "ux.step2.hca1": "Procesando tu tour",
+        "ux.step2.hca2": "Voz a texto, fotos y campos estructurados",
+        "ux.step2.hca3": "Solo estado",
+        "ux.step3.title": "Página de revisión",
+        "ux.step3.body": "Envía un enlace web limpio de vuelta a WhatsApp para que el operador pueda previsualizar y aprobar la versión final sin necesitar un dashboard completo.",
+        "ux.step3.hca1": "Tu tour está listo",
+        "ux.step3.hca2": "Título, fotos, itinerario, precio y variantes de idioma",
+        "ux.step3.hca3": "Aprobar o editar por WhatsApp",
+        "ux.step4.title": "Publicación y asistencia",
+        "ux.step4.body": "Permite que los operadores elijan primero dónde quieren ayuda. Cuando las verificaciones de identidad o los pasos de cuenta se vuelvan difíciles, cambia sin fricción a asistencia humana.",
+        "ux.step4.hca1": "Elige canales",
+        "ux.step4.hca2": "Beneficios, requisitos y estado de la cuenta",
+        "ux.step4.hca3": "Seleccionar y continuar",
+        "ux.step5.title": "Estado y éxito",
+        "ux.step5.body": "Los operadores necesitan prueba visible de que están avanzando. El momento de conversión más importante es el primer listing en vivo.",
+        "ux.step5.hca1": "Ya estás en vivo",
+        "ux.step5.hca2": "Enlaces en vivo, revisiones necesarias y siguientes pasos",
+        "ux.step5.hca3": "Compartir enlace o referir a otro operador",
+        "traveler.head": "Capa para el Viajero, Después",
+        "traveler.sub": "No construyas primero el marketplace completo. Aun así, diseña tu modelo de datos para que una superficie ligera de reservas pueda agregarse cuando la oferta sea densa.",
+        "traveler.card1.title": "Página de descubrimiento",
+        "traveler.card1.1": "Encuentra experiencias locales auténticas",
+        "traveler.card1.2": "Ubicación, precio, categoría y tarjetas",
+        "traveler.card1.3": "Reservar ahora",
+        "traveler.card2.title": "Página de experiencia",
+        "traveler.card2.1": "Título del tour y prueba social",
+        "traveler.card2.2": "Itinerario, imágenes, inclusiones y perfil del operador",
+        "traveler.card2.3": "Reservar experiencia",
+        "arch.head": "Arquitectura Técnica",
+        "arch.sub": "Pensada para producción desde el inicio, pero lo bastante ligera para un rollout liderado por fundador. El sistema es un motor de flujos, no una simple app CRUD.",
+        "arch.card1.title": "Frontend",
+        "arch.card1.1": "Next.js App Router",
+        "arch.card1.2": "Tailwind o utilidades de estilo similares",
+        "arch.card1.3": "Páginas web de revisión",
+        "arch.card1.4": "Dashboard interno de operaciones",
+        "arch.card2.title": "Backend",
+        "arch.card2.1": "FastAPI para APIs tipadas",
+        "arch.card2.2": "PostgreSQL como fuente de verdad",
+        "arch.card2.3": "Redis como broker de colas",
+        "arch.card2.4": "Celery para tareas en segundo plano",
+        "arch.card3.title": "Pipeline asíncrono",
+        "arch.pipeline": "Input crudo de WhatsApp\n→ transcripción\n→ esquema de extracción\n→ enriquecimiento\n→ traducción\n→ generación específica por plataforma\n→ revisión humana\n→ seguimiento de publicación",
+        "arch.card4.title": "Modelo de datos canónico",
+        "arch.model": "Operator\n- id\n- name\n- phone\n- location\n- onboarding_status\n\nExperience\n- id\n- operator_id\n- raw_input\n- structured_data\n- status\n\nListing\n- id\n- experience_id\n- platform\n- status\n- live_url",
+        "arch.card5.title": "Estrategia de colas",
+        "arch.queue": "Colas\n- ingest\n- media\n- ai_extract\n- ai_generate\n- notifications\n\nRegla\n- mantener la lógica de dominio en servicios\n- mantener las tareas de Celery delgadas\n- hacer cada paso idempotente",
+        "ai.head": "Blueprint del Pipeline de IA",
+        "ai.sub": "El moat no es un solo prompt. Es un pipeline estructurado con validación, normalización y esquemas repetibles en cada etapa.",
+        "ai.card1.title": "1. Transcribir",
+        "ai.card1.body": "Convierte notas de voz del operador en texto limpio en español.",
+        "ai.card2.title": "2. Extraer",
+        "ai.card2.body": "Normaliza ubicación, precio, duración, highlights, inclusiones e itinerario en un esquema canónico.",
+        "ai.card3.title": "3. Enriquecer + Traducir",
+        "ai.card3.body": "Aclara la estructura, llena vacíos de formato y crea buenas versiones en inglés sin sonar robóticas.",
+        "ai.card4.title": "4. Variantes por plataforma",
+        "ai.card4.body": "Genera versiones específicas por canal optimizadas para distintos estilos de listing y necesidades de revisión.",
+        "roadmap.head": "Roadmap de Ejecución",
+        "roadmap.sub": "Construye el backbone rápido y luego valida en campo con onboarding directo de operadores. Este es un negocio de ejecución antes de convertirse en un negocio de software.",
+        "roadmap.m1.tag": "Semanas 1–2",
+        "roadmap.m1.title": "Fundaciones",
+        "roadmap.m1.1": "Configura la app en Next.js, el servicio en FastAPI, Postgres, Redis y Celery",
+        "roadmap.m1.2": "Crea la ingestión por webhook de WhatsApp",
+        "roadmap.m1.3": "Persiste assets crudos y registros de operadores",
+        "roadmap.m2.tag": "Semanas 3–4",
+        "roadmap.m2.title": "Pipeline Estructurado de IA",
+        "roadmap.m2.1": "Implementa el flujo de transcripción y extracción",
+        "roadmap.m2.2": "Construye los pasos de traducción y generación de listings",
+        "roadmap.m2.3": "Crea la página de revisión del operador y el loop de aprobación",
+        "roadmap.m3.tag": "Semana 5",
+        "roadmap.m3.title": "Dashboard Interno de Operaciones",
+        "roadmap.m3.1": "Tablero de pipeline para estados y handoffs",
+        "roadmap.m3.2": "Vista editable de la experiencia",
+        "roadmap.m3.3": "Tracker de publicación y revisiones",
+        "roadmap.m4.tag": "Semana 6",
+        "roadmap.m4.title": "Lanzamiento Piloto",
+        "roadmap.m4.1": "El fundador maneja directamente los primeros 10 a 15 operadores",
+        "roadmap.m4.2": "Usa onboarding con descuento para acelerar el aprendizaje",
+        "roadmap.m4.3": "Mide el tiempo hasta el primer listing en vivo y las objeciones de los operadores",
+        "playbook.head": "Playbook de los Primeros 50 Operadores",
+        "playbook.sub": "Mantén esto brutalmente enfocado. La meta no es escala nacional. La meta es un movimiento repetible de adquisición y cumplimiento de operadores en un solo país.",
+        "playbook.card1.title": "Movimiento diario",
+        "playbook.card1.1": "Contacta de 5 a 10 operadores por día",
+        "playbook.card1.2": "Combina visitas presenciales y seguimientos por WhatsApp",
+        "playbook.card1.3": "Usa hostales como hubs de referidos",
+        "playbook.card1.4": "Documenta objeciones y sensibilidad al precio",
+        "playbook.card2.title": "Métricas",
+        "playbook.card2.1": "Operadores contactados",
+        "playbook.card2.2": "Operadores onboarded",
+        "playbook.card2.3": "Listings generados",
+        "playbook.card2.4": "Listings en vivo",
+        "playbook.card2.5": "Tiempo hasta el primer listing en vivo",
+        "playbook.card3.title": "Trigger temprano de retención",
+        "playbook.card3.1": "Muéstrales rápido sus enlaces en vivo",
+        "playbook.card3.2": "Usa prueba de progreso para generar referidos",
+        "playbook.card3.3": "Captura testimonios y screenshots",
+        "playbook.card3.4": "Ofrece un mes gratis por referidos exitosos",
+        "notyet.head": "Qué No Construir Todavía",
+        "notyet.sub": "Protege la velocidad rechazando trabajo que parece atractivo pero no cambia el resultado de los primeros 50 operadores.",
+        "notyet.card1.title": "No sobreconstruyas",
+        "notyet.card1.1": "Nada de marketplace complejo para viajeros",
+        "notyet.card1.2": "Nada de lógica profunda tipo channel manager",
+        "notyet.card1.3": "Nada de dashboard self-serve grande para operadores",
+        "notyet.card2.title": "Mantén servicio donde haga falta",
+        "notyet.card2.1": "Ayuda para crear cuentas",
+        "notyet.card2.2": "Soporte para verificaciones de identidad",
+        "notyet.card2.3": "Revisiones de listings rechazados",
+        "notyet.card3.title": "Optimiza para aprender",
+        "notyet.card3.1": "Loops rápidos de feedback",
+        "notyet.card3.2": "Scripts de captura consistentes",
+        "notyet.card3.3": "Seguimiento interno estructurado de estados",
+        "final.head": "Declaración Final de Posicionamiento",
+        "final.sub": "El producto debe entenderse primero como infraestructura para operadores, luego como acelerador de distribución y después como reserva directa. Esa secuencia es la estrategia.",
+        "final.block": "Estamos construyendo la capa de onboarding y crecimiento para operadores turísticos locales en Centroamérica.\n\nFase 1: poner a los operadores en línea y con listings publicados.\nFase 2: ayudarlos a mantener y mejorar esos listings.\nFase 3: agregar distribución y reservas directas.\nFase 4: lanzar un marketplace con densidad real de oferta ya instalada.",
+        "footer.text": "Construido a partir de la discusión estratégica: Nicaragua primero, WhatsApp primero, modelo híbrido de servicio + plataforma, backend con FastAPI, workers con Celery, pipeline estructurado de IA y activación de oferta liderada por fundador."
+      }
+    };
+
+    function applyLanguage(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) {
+          el.textContent = dict[key];
+        }
+      });
+      document.title = lang === 'es'
+        ? 'Motor de Crecimiento para Operadores Turísticos'
+        : 'Central America Tours Operator Growth Engine';
+      document.querySelector('meta[name="description"]').setAttribute(
+        'content',
+        lang === 'es'
+          ? 'Plan estratégico para una plataforma con enfoque inicial en Nicaragua para onboarding y distribución de operadores turísticos y experiencias.'
+          : 'Strategic plan for a Nicaragua-first operator onboarding and distribution platform for tours and experiences.'
+      );
+      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+      });
+      localStorage.setItem('plan_lang', lang);
+    }
+
+    const savedLang = localStorage.getItem('plan_lang') || 'en';
+    applyLanguage(savedLang);
+
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang-btn')));
+    });
+  </script>
+</body>
+</html>
